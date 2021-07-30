@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Profile</h1>
+
+<h2>Hello, <span th:text="${appUser.firstname}"></span></h2>
+
+
+<h1>Username: <span th:text="${appUser.username}"></span></h1>
+
+<p>First Name: <span th:text="${appUser.firstname}"></span></p>
+<p>Last Name: <span th:text="${appUser.lastname}"></span></p>
+<p>Date of Birth: <span th:text="${appUser.dob}"></span></p>
+
+</body>
+</html>
