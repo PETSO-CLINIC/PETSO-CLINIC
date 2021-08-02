@@ -1,60 +1,43 @@
 package com.example.demo.model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
+@Table (name = "doctor")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
-    String username;
-    String password;
-    Date dob;
-    String firstname;
-    String lastname;
+    @Column(name = "id")
+    private Long id;
 
-    public Doctor(long id, String username, String password, Date dob, String firstname, String lastname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.dob = dob;
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
+    @OneToOne(mappedBy = "doctor")
+    private Account account;
+
+
+    private String firstname;
+    private String lastname;
+    private Date dob;
+    private String major;
+
 
     public Doctor() {
+
+    }
+
+    public Doctor(String firstname, String lastname, Date dob, String major) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dob = dob;
+        this.major = major;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -71,5 +54,33 @@ public class Doctor {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
