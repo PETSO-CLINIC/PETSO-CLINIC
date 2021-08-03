@@ -1,100 +1,42 @@
 package com.example.demo.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+
 
 @Entity
-public class AppUser implements UserDetails {
+public class AppUser {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
-    long id;
-    String username;
-    String password;
-    Date dob;
-    String firstname;
-    String lastname;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
 
-    public AppUser(long id, String username, String password, Date dob, String firstname, String lastname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.dob = dob;
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
 
-    public AppUser(String username, String password, Date dob, String firstname, String lastname) {
-        this.username = username;
-        this.password = password;
-        this.dob = dob;
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
+    private String firstname;
+    private String lastname;
+    private Date dob;
+    private String typeOfPet;
 
-    @OneToMany(mappedBy = "appUser")
-    List<Blog> blogs;
+
     public AppUser() {
     }
 
+    public AppUser(String firstname, String lastname, Date dob, String typeOfPet) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.dob = dob;
+        this.typeOfPet = typeOfPet;
+    }
 
     public long getId() {
         return id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -111,5 +53,33 @@ public class AppUser implements UserDetails {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public String getTypeOfPet() {
+        return typeOfPet;
+    }
+
+    public void setTypeOfPet(String typeOfPet) {
+        this.typeOfPet = typeOfPet;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
