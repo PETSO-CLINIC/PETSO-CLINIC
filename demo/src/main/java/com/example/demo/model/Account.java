@@ -8,29 +8,16 @@ import java.util.*;
 
 
 @Entity
-@Table (name = "account")
-public class Account implements UserDetails {
+public class Account implements UserDetails{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
-//    for petOwner
-@OneToOne(cascade = CascadeType.ALL)
-@JoinTable(name = "acc_appuser",
-        joinColumns =
-                { @JoinColumn(name = "account_id", referencedColumnName = "id") },
-        inverseJoinColumns =
-                { @JoinColumn(name = "appuser_id", referencedColumnName = "id") })
-private AppUser appuser;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-//    for doctor
-@OneToOne(cascade = CascadeType.ALL)
-@JoinTable(name = "acc_doctor",
-        joinColumns =
-                { @JoinColumn(name = "account_id", referencedColumnName = "id") },
-        inverseJoinColumns =
-                { @JoinColumn(name = "doctor_id", referencedColumnName = "id") })
-private Doctor doctor;
+    private Long id;
+@OneToOne(mappedBy = "account")
+private AppUser appUser;
+
+@OneToOne(mappedBy = "account")
+private Doctor doctors;
 
 
     @Column(unique = true)
@@ -39,9 +26,9 @@ private Doctor doctor;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "accounts_roles",
-            joinColumns = @JoinColumn(name = "account_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            name = "account_role",
+            joinColumns = @JoinColumn(name = "account_id" , referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id" ,referencedColumnName = "id")
     )
     private Set<Role> roles = new HashSet<>();
 
@@ -51,6 +38,7 @@ private Doctor doctor;
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
+
     }
 
     public Long getId() {
@@ -108,20 +96,20 @@ private Doctor doctor;
         this.password = password;
     }
 
-    public AppUser getAppuser() {
-        return appuser;
+    public AppUser getAppUser() {
+        return appUser;
     }
 
-    public void setAppuser(AppUser appuser) {
-        this.appuser = appuser;
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public Doctor getDoctor() {
-        return doctor;
+        return doctors;
     }
 
     public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+        this.doctors = doctor;
     }
 
     public Set<Role> getRoles() {
@@ -131,7 +119,9 @@ private Doctor doctor;
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
+    public void setRole(Role newRole) {
+        roles.add(newRole);
+    }
     @Override
     public String toString() {
         return "Account{" +

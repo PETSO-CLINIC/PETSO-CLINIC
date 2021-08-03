@@ -4,20 +4,18 @@ import java.util.Date;
 
 
 @Entity
-@Table (name = "doctor")
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    @OneToOne(mappedBy = "doctor")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
-
 
     private String firstname;
     private String lastname;
-    private Date dob;
+    private String dob;
     private String major;
 
 
@@ -25,20 +23,20 @@ public class Doctor {
 
     }
 
-    public Doctor(String firstname, String lastname, Date dob, String major) {
+    public Doctor(String firstname, String lastname, String dob, String major) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dob = dob;
         this.major = major;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public String getFirstname() {
         return firstname;
@@ -56,11 +54,11 @@ public class Doctor {
         this.lastname = lastname;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

@@ -3,16 +3,21 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "roles")
 public class Role {
     @Id
-    @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
     public Long getId() {
         return id;
+    }
+
+    public Role() {
+    }
+
+    public Role(String name) {
+        this.name = name;
     }
 
     public String getName() {

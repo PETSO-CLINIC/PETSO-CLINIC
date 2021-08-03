@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="/createProfile" th:object="${doctor}" >
+
+    <p><label for="firstname">First Name:</label><input name="firstname" id="firstname" /></p>
+    <p><label for="lastname">Last Name:</label><input name="lastname" id="lastname" /></p>
+    <p><label for="dob">Date of Birth:</label><input type="date" name="dob" id="dob" /></p>
+    <p><label for="major">Major:</label><input type="text" name="major" id="major" /></p>
+    <p><label for="account">Account:</label><input type="text" th:field="*{account.id}" name="account" id="account" readonly/></p>
+
+    <input type="submit" />
+</form>
+<p>Hi</p>
+</body>
+</html>

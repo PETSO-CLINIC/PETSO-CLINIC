@@ -5,14 +5,13 @@ import java.util.Date;
 
 
 @Entity
-@Table (name = "appuser")
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-
-    @OneToOne(mappedBy = "appuser")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
 
