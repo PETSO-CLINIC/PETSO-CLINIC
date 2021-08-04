@@ -93,7 +93,7 @@ public class AccountController {
 
 
     @PostMapping ("/createProfile")
-    public RedirectView doctorOrPetOwner(@RequestParam(required = false) String dob, @RequestParam(required = false) String firstname, @RequestParam(required = false) String lastname , @RequestParam(required = false) String major, @RequestParam(required = false) String typeOfPet, @RequestParam(required = false) String dobPetOwner, @RequestParam(required = false) String firstnamePetOwner, @RequestParam(required = false) String lastnamePetOwner ){
+    public RedirectView doctorOrPetOwner(@RequestParam(required = false) String dob,  @RequestParam(required = false) String img,@RequestParam(required = false) String firstname, @RequestParam(required = false) String lastname , @RequestParam(required = false) String major, @RequestParam(required = false) String typeOfPet, @RequestParam(required = false) String dobPetOwner, @RequestParam(required = false) String firstnamePetOwner, @RequestParam(required = false) String lastnamePetOwner, @RequestParam(required = false) String imgPetOwner ){
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -113,6 +113,7 @@ public class AccountController {
             doctor.setLastname(lastname);
             doctor.setMajor(major);
             doctor.setDob(dob);
+            doctor.setImg(img);
             doctorRepository.save(doctor);
             return new RedirectView("/profile");
         }else{
@@ -122,6 +123,7 @@ public class AccountController {
             appUser.setLastnamePetOwner(lastnamePetOwner);
             appUser.setDobPetOwner(dobPetOwner);
             appUser.setTypeOfPet(typeOfPet);
+            appUser.setImgPetOwner(imgPetOwner);
             appUserRepository.save(appUser);
             return new RedirectView("/ownerprofile");
         }

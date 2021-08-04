@@ -20,7 +20,7 @@ public class AppUser {
     private String lastnamePetOwner;
     private String dobPetOwner;
     private String typeOfPet;
-
+    private String imgPetOwner;
     @OneToMany(mappedBy = "appUser")
     List<Blog> blogs;
 
@@ -28,11 +28,12 @@ public class AppUser {
     public AppUser() {
     }
 
-    public AppUser(String firstnamePetOwner, String lastnamePetOwner, String dobPetOwner, String typeOfPet) {
+    public AppUser(String firstnamePetOwner, String lastnamePetOwner, String dobPetOwner, String typeOfPet, String imgPetOwner) {
         this.firstnamePetOwner = firstnamePetOwner;
         this.lastnamePetOwner = lastnamePetOwner;
         this.dobPetOwner = dobPetOwner;
         this.typeOfPet = typeOfPet;
+        this.imgPetOwner = imgPetOwner;
     }
 
     public Long getId() {
@@ -81,6 +82,14 @@ public class AppUser {
 
     public void setTypeOfPet(String typeOfPet) {
         this.typeOfPet = typeOfPet;
+    }
+
+    public String getImgPetOwner() {
+        return imgPetOwner;
+    }
+
+    public void setImgPetOwner(String imgPetOwner) {
+        this.imgPetOwner = imgPetOwner;
     }
 
     public List<Blog> getBlogs() {

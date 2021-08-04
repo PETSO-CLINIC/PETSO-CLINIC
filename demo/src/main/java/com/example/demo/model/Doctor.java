@@ -17,18 +17,28 @@ public class Doctor {
     private String lastname;
     private String dob;
     private String major;
-
+    private String img;
 
     public Doctor() {
 
     }
 
-    public Doctor(String firstname, String lastname, String dob, String major) {
+    public Doctor(String firstname, String lastname, String dob, String major, String img) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dob = dob;
         this.major = major;
+        this.img = img;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
 
 //    public long getId() {
 //        return id;
