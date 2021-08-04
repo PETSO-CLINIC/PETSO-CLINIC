@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -15,60 +16,27 @@ public class AppUser {
     private Account account;
 
 
-    private String firstname;
-    private String lastname;
-    private Date dob;
+    private String firstnamePetOwner;
+    private String lastnamePetOwner;
+    private String dobPetOwner;
     private String typeOfPet;
+
+    @OneToMany(mappedBy = "appUser")
+    List<Blog> blogs;
 
 
     public AppUser() {
     }
 
-    public AppUser(String firstname, String lastname, Date dob, String typeOfPet) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.dob = dob;
+    public AppUser(String firstnamePetOwner, String lastnamePetOwner, String dobPetOwner, String typeOfPet) {
+        this.firstnamePetOwner = firstnamePetOwner;
+        this.lastnamePetOwner = lastnamePetOwner;
+        this.dobPetOwner = dobPetOwner;
         this.typeOfPet = typeOfPet;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public String getTypeOfPet() {
-        return typeOfPet;
-    }
-
-    public void setTypeOfPet(String typeOfPet) {
-        this.typeOfPet = typeOfPet;
     }
 
     public void setId(Long id) {
@@ -81,5 +49,45 @@ public class AppUser {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public String getFirstnamePetOwner() {
+        return firstnamePetOwner;
+    }
+
+    public void setFirstnamePetOwner(String firstnamePetOwner) {
+        this.firstnamePetOwner = firstnamePetOwner;
+    }
+
+    public String getLastnamePetOwner() {
+        return lastnamePetOwner;
+    }
+
+    public void setLastnamePetOwner(String lastnamePetOwner) {
+        this.lastnamePetOwner = lastnamePetOwner;
+    }
+
+    public String getDobPetOwner() {
+        return dobPetOwner;
+    }
+
+    public void setDobPetOwner(String dobPetOwner) {
+        this.dobPetOwner = dobPetOwner;
+    }
+
+    public String getTypeOfPet() {
+        return typeOfPet;
+    }
+
+    public void setTypeOfPet(String typeOfPet) {
+        this.typeOfPet = typeOfPet;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 }

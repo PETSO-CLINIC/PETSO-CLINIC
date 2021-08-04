@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form method="POST" action="/createProfile" th:object="${doctor}" >
+<form method="POST" action="/createProfile" th:object="${doctor}" sec:authorize="hasAnyAuthority('DOCTOR')"  >
 
     <p><label for="firstname">First Name:</label><input name="firstname" id="firstname" /></p>
     <p><label for="lastname">Last Name:</label><input name="lastname" id="lastname" /></p>
     <p><label for="dob">Date of Birth:</label><input type="date" name="dob" id="dob" /></p>
     <p><label for="major">Major:</label><input type="text" name="major" id="major" /></p>
+<!--    <p><label for="account">Account:</label><input type="text" th:field="*{account.id}" name="account" id="account" readonly/></p>-->
+
+    <input type="submit" />
+</form>
+
+<form method="POST" action="/createProfile" th:object="${appUser}" sec:authorize="hasAnyAuthority('PET_OWNER')"  >
+
+    <p><label for="firstnamePetOwner">First Name:</label><input name="firstnamePetOwner" id="firstnamePetOwner" /></p>
+    <p><label for="lastnamePetOwner">Last Name:</label><input name="lastnamePetOwner" id="lastnamePetOwner" /></p>
+    <p><label for="dobPetOwner">Date of Birth:</label><input type="date" name="dobPetOwner" id="dobPetOwner" /></p>
+    <p><label for="typeOfPet">type Of Pet:</label><input type="text" name="typeOfPet" id="typeOfPet" /></p>
     <p><label for="account">Account:</label><input type="text" th:field="*{account.id}" name="account" id="account" readonly/></p>
 
     <input type="submit" />

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div th:each="appUser : ${appUser}">-->
+<!--    <h1><span th:text="${appUser.firstnamePetOwner}"></span></h1>-->
+<!--</div>-->
+<div th:each="blog : ${blog}" >
+<!--    <h1>userName:<span th:text="${blog.account}"></span> </h1>-->
+  <h1>Pet Name : <span th:text="${blog.petName}"></span></h1>
+  <p>img: <span th:text="${blog.imgUrl}"></span></p>
+  <p>Des: <span th:text="${blog.description}"></span></p>
+  <p>Time: <span th:text="${blog.timestamp}"></span></p>
+    <a th:href="@{/delete/{id}(id=${blog.id})}">Delete</a>
+    <a th:href="@{/edit/{id}(id=${blog.id})}">Edit</a>
+
+
+</div>
+
+
+<a href="/addblog">Add Blog</a>
+</body>
+</html>
