@@ -1,32 +1,100 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!--  <meta charset="UTF-8">-->
-<!--  <title>Hello WebSocket</title>-->
-<!--&lt;!&ndash;  <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">&ndash;&gt;-->
-<!--&lt;!&ndash;  <link href="/main.css" rel="stylesheet">&ndash;&gt;-->
-<!--&lt;!&ndash;  <script src="/webjars/jquery/jquery.min.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;  <script src="/webjars/sockjs-client/sockjs.min.js"></script>&ndash;&gt;-->
-<!--  <script src="/webjars/stomp-websocket/stomp.min.js"></script>-->
-<!--  <script src="/app.js"></script>-->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
 <header>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-        <li><a href="/blog">Blogs</a></li>
-        <li><a href="/signup">Sign UP</a></li>
-        <li><a href="/login">Login</a></li>
-      <li><a href="contact.asp">Meet Our Doctors</a></li>
-      <li><a href="contact.asp">Advance</a></li>
-      <li><a href="about.asp">About us</a></li>
-    </ul>
-  </nav>
-</header>
+
+
+    <style>
+    /* Default height for small devices */
+    #intro-example {
+      height: 400px;
+    }
+
+    /* Height for devices larger than 992px */
+    @media (min-width: 992px) {
+      #intro-example {
+        height: 600px;
+      }
+    }
+  </style>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarExample01"
+                aria-controls="navbarExample01"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ourDoctors">Meet Our Doctors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Background image -->
+    <div
+            id="intro-example"
+            class="p-5 text-center bg-image"
+            style="background-image: url('https://suttonveterinary.com/wp-content/uploads/SLDR-lab.jpg');"
+    >
+      <div class="mask" style="background-color: rgba(75, 119, 190, 0.4) !important; margin-top: 150px;">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <h1 class="mb-3">PETSO CLINIC</h1>
+            <h5 class="mb-4">Best & free guide of responsive web design</h5>
+            <a
+                    class="btn btn-outline-light btn-lg m-2"
+                    href="/signup"
+                    role="button"
+                    rel="nofollow"
+                    target="_blank"
+            >JOIN US</a
+            >
+            <a
+                    class="btn btn-outline-light btn-lg m-2"
+                    href="/login"
+                    target="_blank"
+                    role="button"
+            >LOGIN</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Background image -->
+  </header>
+    <!-- Background image -->
 
 
 </body>

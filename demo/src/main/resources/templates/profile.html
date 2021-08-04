@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div>
+    <p>First Name: <span th:text="${doctor.firstname}"></span></p>
+    <p>Last Name: <span th:text="${doctor.lastname}"></span></p>
+    <p>Date of Birth: <span th:text="${doctor.dob}"></span></p>
+    <p>Major: <span th:text="${doctor.major}"></span></p>
+</div>
+
+<p>hi doctor</p>
 
 </body>
 </html>

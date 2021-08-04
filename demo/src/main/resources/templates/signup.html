@@ -3,19 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  margin-top:200px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  margin:20px;
+}
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: rgba(75, 119, 190, 0.4) ;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+    margin:20px;
+
+}
+h2{
+  text-align: center;
+    display; block;
+color:rgba(75, 119, 190, 0.8) ;
+margin-top : 15px ;
+}
+h3{
+  text-align: center;
+    display; block;
+color:rgba(75, 119, 190, 0.8) ;
+margin-top : 15px ;
+
+}
+label{
+  transition-duration: 0.4s;
+
+margin: 30px;
+color:rgba(75, 119, 190, 0.8) ;
+}
+.button:hover {
+  background-color: rgba(75, 119, 190, 0.8); /* Green */
+  color: white;
+}
+select{
+    margin:20px;
+
+color:rgba(75, 119, 190, 0.8) ;
+}
+
+    </style>
 </head>
 <body>
-<form method="POST" action="/signup" th:object="${signup}">
-        <p><label for="username">Username:</label><input name="username" id="username"/></p>
-        <p><label for="password">Password:</label><input type="password" name="password" id="password" /></p>
+
+<div class="card">
+    <h2>
+        SIGN UP
+
+    </h2>
+    <h3>
+        AND BE ONE OF OUR FAMILY
+    </h3>
     <div>
-        <select th:field="*{role}" >
-            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
-        </select>
+
+        <div class="container">
+
+            <form method="POST" action="/signup" th:object="${signup}">
+                <label for="username">Username:</label><input name="username" id="username"/>
+                <br>
+                <br>
+                <label for="password">Password:</label><input type="password" name="password" id="password" />
+                <br>
+                <br>
+                <div>
+                    <label for="role">Sign Up As !:</label>   <select th:field="*{role}" >
+                        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}" id="role"></option>
+                    </select>
+                </div>
+                <input class="button" type="submit" />
+            </form>
+        </div>
     </div>
-    <input type="submit" />
-</form>
-
-
+</div>
 </body>
 </html>

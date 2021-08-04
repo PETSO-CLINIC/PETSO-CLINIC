@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -32,11 +33,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
 //                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers( "/", "/signup", "/createProfile").permitAll()
+                .antMatchers( "/", "/signup", "/createProfile","/ourDoctors", "/blog").permitAll()
+                .antMatchers("/addblog","/delete/{id}").hasAnyAuthority("PET_OWNER")
                 .anyRequest().authenticated()
                 .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
+                .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
                 .permitAll()
                 .and()
                 .logout()
