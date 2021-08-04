@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<p>First Name: <span th:text="${doctor.firstname}"></span></p>-->
+<!--<p>Last Name: <span th:text="${doctor.lastname}"></span></p>-->
+<!--<p>Date of Birth: <span th:text="${doctor.dob}"></span></p>-->
+<!--<p>Major: <span th:text="${doctor.major}"></span></p>-->
+<div th:each="doctor: ${doctors}">
+    <p >First Name: <span th:text=${doctor.firstname}></span></p>
+    <p>Last Name: <span th:text=${doctor.lastname}></span> </p>
+    <p>Date Of Birthday: <span th:text=${doctor.dob}></span></p>
+    <p>Major: <span th:text=${doctor.major}></span></p>
+</div>
+</body>
+</html>
