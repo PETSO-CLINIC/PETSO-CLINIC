@@ -2,10 +2,12 @@ package com.example.demo.web;
 
 import com.example.demo.infrastructure.AccountRepository;
 import com.example.demo.infrastructure.AppUserRepository;
+import com.example.demo.infrastructure.DoctorRepository;
 import com.example.demo.infrastructure.service.BlogRepository;
 import com.example.demo.infrastructure.service.BlogService;
 import com.example.demo.model.AppUser;
 import com.example.demo.model.Blog;
+import com.example.demo.model.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,6 +38,8 @@ public class BlogController {
     AccountRepository accountRepository;
     @Autowired
     BlogService blogService;
+    @Autowired
+    DoctorRepository doctorRepository;
 
 
     @GetMapping("/addblog")
@@ -70,25 +74,61 @@ public class BlogController {
 
     @GetMapping("/delete/{id}")
     String deleteBlog(@PathVariable("id") long id, Model model) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        AppUser appUser = appUserRepository.findById(accountRepository.getUserByUsername(userDetails.getUsername()).getId().longValue());
+        Doctor doctors = doctorRepository.findById(accountRepository.getUserByUsername(userDetails.getUsername()).getId().longValue());
+
         Blog blog = blogService.getBlog(id);
-        blogService.deleteBlog(blog);
-        return "redirect:/blog";
+        if(appUser.getId().equals(blog.getAppUser().getId())){
+            blogService.deleteBlog(blog);
+            return "redirect:/blog";
+
+        }else{
+            return "error";
+        }
+
+    }
+
+    @GetMapping("/forceddelete/{id}")
+    String forcedDeleteBlog(@PathVariable("id") long id, Model model) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Doctor doctors = doctorRepository.findById(accountRepository.getUserByUsername(userDetails.getUsername()).getId().longValue());
+
+        Blog blog = blogService.getBlog(id);
+            blogService.deleteBlog(blog);
+            return "redirect:/blog";
+
     }
 
     @GetMapping("/edit/{id}")
     String showUpdateForm(@PathVariable("id") long id, Model model) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        AppUser appUser = appUserRepository.findById(accountRepository.getUserByUsername(userDetails.getUsername()).getId().longValue());
         Blog blog = blogService.getBlog(id);
 
-        model.addAttribute("blog", blog);
-        return "update_blog";
+        if(appUser.getId().equals(blog.getAppUser().getId())){
+            model.addAttribute("blog", blog);
+            return "update_blog";
+        }else{
+            return "error";
+        }
+
     }
 
     @PostMapping("/update/{id}")
     String updateAlbum(@PathVariable("id") long id, @Valid Blog blog, BindingResult result, Model model) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        AppUser appUser = appUserRepository.findById(accountRepository.getUserByUsername(userDetails.getUsername()).getId().longValue());
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        LocalTime localTime = localDateTime.toLocalTime();
         if (result.hasErrors()) {
             blog.setId(id);
+
             return "update_blog";
         }
+        blog.setTimestamp(localTime);
+        blog.setAppUser(appUser);
 
         blogService.saveBlog(blog);
         return "redirect:/blog";

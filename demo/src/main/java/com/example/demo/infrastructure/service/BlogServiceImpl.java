@@ -1,7 +1,6 @@
 package com.example.demo.infrastructure.service;
 
 import com.example.demo.model.Blog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +16,6 @@ public class BlogServiceImpl implements BlogService {
 
     }
 
-
-//    @Autowired
-//    BlogRepository blogRepository;
 
 
     @Override

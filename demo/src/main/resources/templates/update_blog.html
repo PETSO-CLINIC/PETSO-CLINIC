@@ -12,6 +12,13 @@
   <label for="id">Id</label>
   <input type="number" th:field="*{id}" id="id" placeholder="Id" readonly>
 
+<!--  <label for="timestamp">timestamp</label>-->
+<!--  <input type="number" th:field="{blog.timestamp}" id="timestamp" placeholder="timestamp" readonly>-->
+
+<!--  <label for="appUser">Id</label>-->
+<!--  <input type="number" th:field="{blog.appUser}" id="appUser" placeholder="appUser" readonly>-->
+
+
   <label for="petName">Pet Name:</label>
   <input type="text" th:field="*{petName}" id="petName" placeholder="petName">
   <span th:if="${#fields.hasErrors('petName')}" th:errors="*{petName}"></span>
