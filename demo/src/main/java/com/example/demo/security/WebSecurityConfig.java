@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers( "/", "/signup", "/createProfile","/ourDoctors", "/blog").permitAll()
                 .antMatchers("/addblog","/delete/{id}").hasAnyAuthority("PET_OWNER")
+                .antMatchers("/forceddelete/{id}").hasAnyAuthority("DOCTOR")
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")

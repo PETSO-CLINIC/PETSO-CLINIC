@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<!--<div th:each="appUser : ${appUser}">-->
-<!--    <h1><span th:text="${appUser.firstnamePetOwner}"></span></h1>-->
-<!--</div>-->
+
 <div th:each="blog : ${blog}" >
-<!--    <h1>userName:<span th:text="${blog.account}"></span> </h1>-->
-  <h1>Pet Name : <span th:text="${blog.petName}"></span></h1>
+    <h1> Name : <span th:text="${blog.appUser.getAccount().getUsername()}"></span></h1>
+    <p>Pet Name : <span th:text="${blog.petName}"></span></p>
   <p>img: <span th:text="${blog.imgUrl}"></span></p>
   <p>Des: <span th:text="${blog.description}"></span></p>
   <p>Time: <span th:text="${blog.timestamp}"></span></p>
-    <a th:href="@{/delete/{id}(id=${blog.id})}">Delete</a>
-    <a th:href="@{/edit/{id}(id=${blog.id})}">Edit</a>
+    <div ></div>
+    <a th:href="@{/delete/{id}(id=${blog.id})}" sec:authorize="hasAnyAuthority('PET_OWNER')">Delete</a>
+    <a th:href="@{/forceddelete/{id}(id=${blog.id})}" sec:authorize="hasAnyAuthority('DOCTOR')">Forced Delete</a>
+    <a th:href="@{/edit/{id}(id=${blog.id})}" sec:authorize="hasAnyAuthority('PET_OWNER')">Edit</a>
 
 
 </div>

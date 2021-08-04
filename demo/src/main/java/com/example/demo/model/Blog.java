@@ -18,8 +18,6 @@ public class Blog {
     AppUser appUser;
 
 
-//    @ManyToOne
-//    Doctor doctor;
 
     public Blog(long id, String petName, String imgUrl, String description) {
         this.id = id;
@@ -87,4 +85,11 @@ public class Blog {
         this.id = id;
     }
 
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
 }
