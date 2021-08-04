@@ -19,7 +19,6 @@ private AppUser appUser;
 @OneToOne(mappedBy = "account")
 private Doctor doctors;
 
-
     @Column(unique = true)
    private String username;
    private String password;
@@ -122,12 +121,18 @@ private Doctor doctors;
     public void setRole(Role newRole) {
         roles.add(newRole);
     }
+
+    //    @Override
+//    public String toString() {
+//        return "Account{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                '}';
+//
+//    }
+
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                '}';
-
+        return  username;
     }
 }
