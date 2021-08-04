@@ -61,3 +61,75 @@
      **I think until now We have one or two times to merge**  
       -  ***How will you communicate that it’s time to merge?***
        **After everyone had finished his work. They told me to merge one by one at the same time we solve the conflict togther according to our works**
+
+## Our wireFrame
+![wireFrame](finalWWWframeProject.png)
+
+## User Stories
+
+***We created a web app for a pet clinic that has pet owners and doctors where the pet owner can share his blog and consult the doctor about his pet at the same time he can connect with other pet owners through general chat. In addition, he can delete or edit the blog***
+
+ ### As a role `Pet Owner`, I want to ability to modify my blog  and consult the doctor
+ ### As a role `Doctor`, I want to ability to accept the answer from the pet owner and answer him and delete the pet owner's blogs
+
+- ***Feature tasks***
+1. **create profile** 
+2. **add blog**
+3. **edit my blog**
+4. **delete my blog**
+5. **connect with other pet owners**
+6. **consult the doctor**
+
+- ***Acceptance Tests***
+1. **create profile** 
+2. **accept the massage from  all the pet owners in the general chat**
+3. **doctor answer the pet owner**
+4. **delete all blogs**
+5. **Ensure that the blogs and all massages successfully save into database**
+
+
+## Software Requirements
+- ***What is the vision of this product?***
+**TO take care our pet around the world**
+
+- ***What pain point does this project solve?***
+***This app permit to the pet owners around the world to connect with doctors and share the daily lif of their pets through this app***
+
+- ***Why should we care about your product?***
+**because most of people around the world have a got pet and try to connect with other pet owners and other doctors around the world** 
+
+## Minimum Viable Product vs
+
+- ***What will your MVP functionality be?***
+1. **Pet owner profile**
+2. **Doctor profile**
+3. **How to sign up for both of them** 
+4. **Create a blog page and make the pet owner share his blog with others, in addition, he can delete or edit the blog**
+5. **Create profile page for the doctors**
+6. **Create a general chat between pet owners**
+7. **create a privte chat between doctor and pet owner** 
+
+- ***What are your stretch goals?***
+1. **vedio call between the doctor and the owner**
+2. **pet owner can commet  and like on the others blog**
+3. **pet owner and doctor can reply every massage in general chat**
+4. **users can add and follow each other**
+
+## Functional Requirements
+
+1. **petowner and doctor can create profile** 
+2. **petowner can add blog**
+3. **petowner can edit my blog**
+4. **petowner can delete my blog**
+5. **petowner can connect with other pet owners**
+6. **petowner can massage the doctor**
+7. **doctor can answer the pet owner**
+8. **doctor can delete all blogs**
+9. **doctor can write in the general chat**
+
+## Domain Modeling
+![DomainModeling](domainModeling.png)
+
+
+## Database UML Diagram
+![UML](image.png)
