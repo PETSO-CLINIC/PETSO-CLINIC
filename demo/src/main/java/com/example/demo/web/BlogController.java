@@ -69,7 +69,7 @@ public class BlogController {
         Blog blog = new Blog(petName, imgUrl, description, localTime, appUser);
         blogRepository.save(blog);
 
-        return new RedirectView("/");
+        return new RedirectView("/blog");
     }
 
     @GetMapping("/delete/{id}")
